@@ -1,0 +1,35 @@
+{
+  "Welcome": "Bienvenido",
+  "A brand new app.": "Una nueva aplicación.",
+
+  "_comment.create-user": "create user",
+  "user.create.validate.fullName": "Se requiere el nombre completo.",
+  "user.create.validate.fullName.length": "El nombre debe tener al menos 3 letras.",
+  "user.create.validate.email": "E-mail inválido.",
+  "user.create.validate.password.required": "Se requiere contraseña",
+  "user.create.validate.password.is.numeric": "La contraseña debe ser numérica.",
+  "user.create.validate.password.min.length": "La contraseña debe tener al menos 6 dígitos.",
+  "user.create.validate.email.in.use": "Correo electrónico ya está en uso.",
+  "user.create.fail.message": "no puede guardar sus datos, verifique los siguientes campos: fullName, email, password (sólo números).",
+
+  "_comment.login": "login session",
+  "user.login.user.not.found": "Usuario no encontrado.",
+  "user.login.invalid.login.data": "Por favor, marque los campos: correo electrónico, contraseña.",
+  "user.login.incorrect.password": "contraseña incorrecta.",
+  "user.login.fail.to.login": "Error al iniciar sesión, inténtelo de nuevo más tarde.",
+  "user.login.forbidden": "Acceso denegado, inicie sesión primero.",
+
+  "_comment.study.event": "study event session",
+  "study.event.validate.subject": "O assunto (subject) é obrigatório.",
+  "study.event.validate.source": "A fonte do estudo (source) é obrigatória: ['ONLINE_COURSE','YOUTUBE','PDF/EBOOK','BOOK'].",
+  "study.event.validate.resource.name": "O nome do recurso (resourceName) de estudo deve ser especificado. Ex: curso de photoshop ...",
+  "study.event.validate.link.url": "O link (link) para o recurso de estudo deve ser uma URL válida: Ex: https://www.youtube.com/watch?v=88DS3Z8nOdY.",
+  "study.event.validate.estimated.time.positive": "O tempo estimado (estimatedTime) deve ser um valor tipo timestamp positivo: Ex: 1617737089623.",
+  "study.event.validate.is.concluded": "O valor para o estado de conclusão do recurso (isConcluded) deve ser um booleano. Ex: true/false.",
+  "study.event.validate.conclusion.date.positive": "A data de conclusão do recurso (conclusionDate) deve ser um valor tipo timestamp positivo: Ex: 1617737089623.",
+  "study.event.validate.user.id.required": "O id do usuário é obrigatório.",
+  "study.event.validate.user.id.positive": "O id do usuário deve ser um número positivo válido.",
+  "study.event.validate.create.invalid.args": "Por favor verifique os dados  dos campos [subject, source, resourceName, estimatedTime, isConcluded, conclusionDate, image, link].",
+  "study.event.validate.create.user.id.invalid": "O usuário (user) informado não corresponde ao usuário logado.",
+  "study.event.not.found": "No se encontró el evento de estudio con id: %s."
+}

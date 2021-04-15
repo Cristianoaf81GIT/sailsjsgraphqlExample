@@ -1,0 +1,42 @@
+{
+  "name": "sails-graphql",
+  "private": true,
+  "version": "0.0.0",
+  "description": "a Sails application",
+  "keywords": [],
+  "dependencies": {
+    "@sailshq/lodash": "^3.10.3",
+    "bcrypt": "^5.0.1",
+    "date-fns": "^2.19.0",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "sails": "^1.4.0",
+    "sails-disk": "^2.1.0",
+    "sails-hook-orm": "^3.0.1",
+    "sails-hook-sockets": "^2.0.0",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "eslint": "5.16.0",
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "debug": "DEBUG=i18n-2:* node app.js",
+    "test": "npm run lint && npm run custom-tests && echo 'Done.'",
+    "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
+    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cristianoaf81/sails-graphql-2.git"
+  },
+  "author": "cristianoaf81",
+  "license": "",
+  "engines": {
+    "node": "^12.18"
+  }
+}
