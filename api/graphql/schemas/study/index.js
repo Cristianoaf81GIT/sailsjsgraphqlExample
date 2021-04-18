@@ -46,6 +46,27 @@ const StudyEventType = new graphql.GraphQLObjectType({
     }
 });
 
+const StudyEventListType = new graphql.GraphQLObjectType({
+    name: 'StudyEventlist',
+    description: 'User\'s StudyEvent list',
+    fields: () => (
+        {
+            UserStudyEvents: { 
+                type: new graphql.GraphQLList(StudyEventType), 
+                description: 'all user Study Event',
+                resolve: rootResolvers.getAllStudyEvents
+            }
+        }
+    )
+    // fields: {
+    //     studyEvents: {
+    //         type: new graphql.GraphQLList(StudyEventType), 
+    //         description: 'all user Study Event',
+    //         resolve: rootResolvers.getAllStudyEvents
+    //     }
+    // }
+});
+
 const studyEventCreate = {
     type: StudyEventType,
     description: 'Create a new StudyEvent',
@@ -88,8 +109,15 @@ const studyEventDelete = {
     resolve: rootResolvers.deleteStudyEvent
 }
 
+const studyEventGetAll = {
+    type: StudyEventListType,
+    description: 'Get All studyEvents',
+    resolve: rootResolvers.getAllStudyEvents
+}
+
 module.exports = {
     studyEventCreate,
     studyEventUpdate,
-    studyEventDelete
+    studyEventDelete,
+    studyEventGetAll
 }

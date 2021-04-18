@@ -1,6 +1,6 @@
 const { helloController } = require('../../controllers/hello/HelloController');
 const { createUser, login, updateUser } = require('../../controllers/user/UserController');
-const { createStudyEvent, updateStudyEvent, deleteStudyEvent } = require('../../controllers/study/StudyEventController');
+const { createStudyEvent, updateStudyEvent, deleteStudyEvent, getAllStudyEvents } = require('../../controllers/study/StudyEventController');
 
 module.exports.rootResolvers = {
     helloController,
@@ -9,5 +9,6 @@ module.exports.rootResolvers = {
     updateUser,
     createStudyEvent,
     updateStudyEvent,
-    deleteStudyEvent    
+    deleteStudyEvent,
+    getAllStudyEvents    
 }

@@ -47,7 +47,7 @@ module.exports = {
         throw new Error(error.message);
     }
     
-    const foundStudyEvent = await StudyEvent.findOne({user: loggedUser.id});
+    const foundStudyEvent = await StudyEvent.findOne({id: args.id, user: loggedUser.id});
 
     if (!foundStudyEvent) {
       const error = { message: TranslateService(context, 'study.event.not.found') }
@@ -104,6 +104,19 @@ module.exports = {
 
     return deletedStudyEvent;
 
+  },
+
+  getAllStudyEvents: async (_, _args, context) => {
+    const loggedUser = await UserService.getLoggedUser(context);
+
+    if (!loggedUser || !loggedUser.id) {
+      const error = { message: TranslateService(context, 'user.login.forbidden')};
+      throw new Error(error.message);
+    }
+
+    const UserStudyEvents = await StudyEvent.find({ user: loggedUser.id });
+    
+    return UserStudyEvents;
   }
 
 };
