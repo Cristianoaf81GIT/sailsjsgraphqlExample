@@ -17,8 +17,18 @@ const {
 
 
 module.exports = {
+    /***
+     * Create a new User
+     * @param { any } _ any, you can ignore
+     * @param { object } args request arguments object
+     * @param { object } context application context with express.Request, 
+     * express.Response. express.nextFunction
+     * @returns { object } user
+     */
     createUser: async (_, args, context ) => {
+        
         let isValid = await validateUserData(args,context);
+        
         if (isValid) {
             const user = await User.create(args)
                 .intercept('E_UNIQUE', 
@@ -38,26 +48,59 @@ module.exports = {
 
             return user;
         }
-        const error = {message: TranslateService(context,'user.create.fail.message')};
-        return new Error(error.message);   
-    }, 
 
+        
+        const error = {
+            message: TranslateService(
+                context,
+                'user.create.fail.message'
+            )
+        };
+        
+        return new Error(error.message);   
+    },
+    
+    /***
+     * Login
+     * @param { any } _ any, you can ignore
+     * @param { object } args request arguments object
+     * @param { object } context application context with express.Request, 
+     * express.Response. express.nextFunction
+     * @returns { string } token 
+     */
     login: async (_, args, context) => {
+        
         const password = args.password || null;
         const email = args.email || null;
         
         const isValid = await validateLoginData(email, password, context);
 
         if (!isValid) {
-            const error = {message: TranslateService(context, 'user.login.invalid.login.data')};
+            
+            const error = {
+                message: TranslateService(
+                    context, 
+                    'user.login.invalid.login.data'
+                )
+            };
+
             throw new Error(error.message);
+
         }
         
         const user = await User.findOne({ email });
         
         if (!user) {
-            const error = {message: TranslateService(context, 'user.login.user.not.found')};
+            
+            const error = {
+                message: TranslateService(
+                    context, 
+                    'user.login.user.not.found'
+                )
+            };
+
             throw new Error(error.message);
+
         }
 
         const passwordCheck = await sails
@@ -66,33 +109,77 @@ module.exports = {
             .checkPassword(password, user.password);
 
         if (!passwordCheck.status) {
-            const error = {message: TranslateService(context,'user.login.incorrect.password')};
+            
+            const error = {
+                message: TranslateService(
+                    context,
+                    'user.login.incorrect.password'
+                )
+            };
+
             throw new Error(error.message);
+
         }
-        // gerar token em uma helper
+        // generate user access token
         const token = await sails.helpers.user.getToken(user.id);
         if (!token) {
-            const error = {message: TranslateService(context,'user.login.fail.to.login')};
+            
+            const error = {
+                message: TranslateService(
+                    context,
+                    'user.login.fail.to.login'
+                )
+            };
+
             throw new Error(error.message);
-        }            
+
+        }   
+
         return token;
+
     },
 
+    /***
+     * Update User
+     * @param { any } _ any, you can ignore
+     * @param { object } args request arguments object
+     * @param { object } context application context with express.Request, 
+     * express.Response. express.nextFunction
+     * @returns { object } user
+     */
     updateUser: async (_, args, context) => {
-        // validar usuario
-        const loggedUser = await getLoggedUser(context); // pega o usuario logado
+        
+        const loggedUser = await getLoggedUser(context); 
+        
         if (!loggedUser) {
-            const error = {message: TranslateService(context, 'user.login.forbidden')};
+            
+            const error = {
+                message: TranslateService(
+                    context, 
+                    'user.login.forbidden'
+                )
+            };
+
             throw new Error(error.message);
-        }
-        // validar argumentos
-        const isValid = await validateOnUpdate(args,context);
-        if (!isValid) {
-            const error = {message: TranslateService(context, 'user.create.fail.message')};
-            throw new Error(error.message);
+
         }
         
-        // procurar usuario no banco se existir senao retornar erro
+        const isValid = await validateOnUpdate(args,context);
+        
+        if (!isValid) {
+            
+            const error = {
+                message: TranslateService(
+                    context, 
+                    'user.create.fail.message'
+                )
+            };
+
+            throw new Error(error.message);
+
+        }
+        
+        
         const fullName = args.fullName || undefined;
         const email = args.email || undefined;
         const password = args.password || undefined;
@@ -103,9 +190,47 @@ module.exports = {
             
             return user;
         } else {
-            const error = {message: TranslateService(context, 'user.create.fail.message')};
+            
+            const error = {
+                message: TranslateService(
+                    context, 
+                    'user.create.fail.message'
+                )
+            };
+
             throw new Error(error.message);
+
         }       
-    }   
+    },
+    
+    /***
+     * Delete User
+     * @param { any } _ any, you can ignore
+     * @param { object } _args request arguments object
+     * @param { object } context application context with express.Request, 
+     * express.Response. express.nextFunction
+     * @returns { object } user
+     */
+    deleteUser: async (_, _args, context) => {
+
+        const loggedUser = await getLoggedUser(context); 
+        
+        if (!loggedUser) {
+            
+            const error = {
+                message: TranslateService(
+                    context, 
+                    'user.login.forbidden'
+                )
+            };
+
+            throw new Error(error.message);
+
+        }
+
+        const user = await User.destroyOne({ id: loggedUser.id });
+
+        return user;
+    }
 };
 

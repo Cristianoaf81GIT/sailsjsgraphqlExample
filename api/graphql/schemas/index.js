@@ -1,9 +1,25 @@
 const { hello } = require('./hello');
-const { userCreate,userLogin, userUpdate } = require('./user');
-const { studyEventCreate, studyEventUpdate, studyEventDelete, studyEventGetAll } = require('./study');
+
+const { 
+    userCreate,
+    userLogin, 
+    userUpdate,
+    userDelete
+} = require('./user');
+
+const { 
+    studyEventCreate, 
+    studyEventUpdate, 
+    studyEventDelete, 
+    studyEventGetAll, 
+    studyEventGetById 
+} = require('./study');
+
 const {GraphQLObjectType } = require('graphql');
 
-
+/**
+ * condenses all schemas as a single query
+ */
 module.exports.rootQuery = new GraphQLObjectType({
     name: 'Query',    
     fields: {
@@ -11,9 +27,11 @@ module.exports.rootQuery = new GraphQLObjectType({
         userCreate,
         userLogin,
         userUpdate,
+        userDelete,
         studyEventCreate,
         studyEventUpdate,
         studyEventDelete,
-        studyEventGetAll                    
+        studyEventGetAll,
+        studyEventGetById                    
     }
 }) 

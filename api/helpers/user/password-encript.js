@@ -23,7 +23,12 @@ module.exports = {
 
   },
 
-
+  /**
+  * function fn, helper that encript user password
+  * @param {object} inputs  object - with properties {password: string}
+  * @param {object} exits object - with properties {succes: function}
+  * @returns {string} hash - a string containing encripted user password
+  */
   fn: async function (inputs, exits) {
     const password = inputs.password;
     bcript.hash(password,10).then((hash) => {

@@ -18,27 +18,27 @@ module.exports = {
     subject: {
       type: 'string',
       required: true,
-      description: 'assunto a ser estudado'
+      description: 'subject to be studied'
     },
     source: {
       type: 'string',
       required: true,
       isIn: ['ONLINE_COURSE','YOUTUBE','PDF/EBOOK','BOOK'],      
-      description: 'fonte de pesquisa: curso online, ebook/pdf, youtube ou outros'
+      description: 'research source: online course, ebook / pdf, youtube or others'
     },
     resourceName: {
       type: 'string',
       required: true,
-      description: 'nome do curso/livro/pdf'
+      description: 'name of the course / book / pdf'
     },
     link: {
       type: 'string',
       isURL: true,
-      description: 'caso o recurso de estudo possua um endereço web'
+      description: 'if the study resource has a web address'
     },
     image: {
       type: 'string',
-      description: 'imagem do livro/curso/ebook - não obrigatório'      
+      description: 'book / course / ebook image - not required'      
     },
     estimatedTime: {
       type: 'number',
@@ -47,15 +47,15 @@ module.exports = {
     isConcluded: {
       type: 'boolean',
       defaultsTo: false,
-      description: 'o curso/livro/ebook foi concluído?'
+      description: 'Has the course / book / ebook been completed?'
     },
     conclusionDate: {
       type: 'number',
-      description: 'data de conclusão do curso/livro/ebook'
+      description: 'date of completion of the course / book / ebook'
     },  
     user: {
       model: 'user',
-      description: 'a qual usuário publicou'
+      description: 'which user is the owner'
     }
   }
 };

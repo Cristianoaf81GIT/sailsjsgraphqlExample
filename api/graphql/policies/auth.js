@@ -1,17 +1,13 @@
 const jwt = require('jsonwebtoken');
+
 /**
- * Middleware que independente de possuir ou não o token
- * permitirá a passagem para o próximo item da cadeia
- * obs: em rotas onde o login é necessário deveremos 
- * verificar o contexto 
- * ex: if (context.req.user) {
- *  pode passar
- * } else {
- *  barra a requisicao
- * }
- * @param { express.Request } req 
- * @param { express.Response } _res 
- * @param { express.NextFunction } next 
+ * Middleware for authentication and users
+ * @example
+ *  // set req.user param
+ *  // req.user = { id: Number, email: string }
+ * @param { object } req express.Request 
+ * @param { Object } _res express.Response
+ * @param { function } next express.NextFunction
  */
 module.exports.authPolicie = async (req, _res, next) => {
   let user = undefined;  

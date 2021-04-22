@@ -24,7 +24,12 @@ module.exports = {
 
   },
 
-
+  /**
+  * function fn, helper that generate user access token
+  * @param {object} inputs  object - with properties {data: number}
+  * @param {object} exits object - with properties {succes: function}
+  * @returns {string} token - a string containing user access token
+  */
   fn: async function (inputs, exits) {
     // Get token.
     const token = jwt.sign({data: inputs.data}, sails.config.secret, {expiresIn: '3h'});    

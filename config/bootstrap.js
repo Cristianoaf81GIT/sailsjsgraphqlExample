@@ -12,14 +12,15 @@ const { graphqlHTTP } = require('express-graphql');
 const { GraphQLSchema } = require('graphql');
 const { rootQuery } = require('../api/graphql/schemas');
 const { authPolicie } = require('../api/graphql/policies/auth');
+// require and configure i18n-2 used by sails
 const i18n = require('i18n-2');
 const i18nOptions = {
-  directory: require('path').resolve(__dirname, '.', 'locales'),
-  extension: '.json',
-  locales: ['en', 'pt-br', 'es']
+  directory: require('path').resolve(__dirname, '.', 'locales'), // set default translations files folder
+  extension: '.json', // file extension type
+  locales: ['en', 'pt-br', 'es'] // suported locales
 };
 module.exports.bootstrap = async function(done) {
-  // aplica middleware de autenticacao
+  // apply athentication middleware
   sails.hooks.http.app.use(authPolicie);
   
   // adiciona suporte manualmente ao i18n-2
@@ -29,13 +30,13 @@ module.exports.bootstrap = async function(done) {
   sails.hooks.http.app.use('/graphql/:language?', 
     graphqlHTTP( (req, res, next) => ({
       schema: new GraphQLSchema({query: rootQuery}),
-      context: {req,res,next},
+      context: {req,res,next}, // set context object, available in controllers ex: UserController(_, args, context) {...}
       customFormatErrorFn: (err) => err.message,
       graphiql: true   
     })
   ));
   
-  
+  // you must return this callback, otherwise sails will not lift
   return done();
 
 };
