@@ -32,7 +32,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/cristianoaf81/sails-graphql-2.git"
+    "url": "https://github.com/Cristianoaf81GIT/sailsjsgraphqlExample.git"
   },
   "author": "cristianoaf81",
   "license": "",
