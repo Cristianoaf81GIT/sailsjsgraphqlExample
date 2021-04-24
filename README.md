@@ -1,6 +1,6 @@
 # sails-graphql-example
 
-a simple [Sails v1](https://sailsjs.com) application with Express-GraphQL
+a simple [Sails v1](https://sailsjs.com) application with Express-GraphQL and nodejs 12.18
 
 ### Links
 
@@ -9,6 +9,7 @@ a simple [Sails v1](https://sailsjs.com) application with Express-GraphQL
 + [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
 + [Community support options](https://sailsjs.com/support)
 + [Professional / enterprise options](https://sailsjs.com/enterprise)
++ [Nodejs documentation](https://nodejs.org/docs/latest-v12.x/api/)
 
 
 ### Version info
