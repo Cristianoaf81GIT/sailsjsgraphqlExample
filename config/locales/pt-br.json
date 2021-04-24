@@ -28,7 +28,7 @@
 	"study.event.validate.conclusion.date.positive": "A data de conclusão do recurso (conclusionDate) deve ser um valor tipo timestamp positivo: Ex: 1617737089623.",
 	"study.event.validate.create.invalid.args": "Por favor verifique os dados  dos campos [subject, source, resourceName, estimatedTime, isConcluded, conclusionDate, image, link].",
 	"study.event.validate.create.user.id.invalid": "O usuário (user) informado não corresponde ao usuário logado.",
-	"study.event.validate.estimate.time.positive": "study.event.validate.estimate.time.positive",
+	"study.event.validate.estimate.time.positive": "O valor para (stimatedTime) deve ser um número positivo.",
 	"study.event.validate.id.required": "O id (número) do evento de estudo é obrigatório.",
 	"study.event.validate.id.positive": "O id do evento de estudo deve ser um número inteiro positivo.",
 	"study.event.not.found": "O evento de estudo com id: %s não foi encontrado."
