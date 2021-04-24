@@ -35,7 +35,7 @@
     "url": "https://github.com/Cristianoaf81GIT/sailsjsgraphqlExample.git"
   },
   "author": "cristianoaf81",
-  "license": "",
+  "license": "GPL-3",
   "engines": {
     "node": "^12.18"
   }

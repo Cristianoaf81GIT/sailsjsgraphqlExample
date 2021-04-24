@@ -1,6 +1,6 @@
-# sails-graphql-2
+# sails-graphql-example
 
-a [Sails v1](https://sailsjs.com) application with GraphQL
+a simple [Sails v1](https://sailsjs.com) application with Express-GraphQL
 
 ### Links
 
@@ -15,6 +15,14 @@ a [Sails v1](https://sailsjs.com) application with GraphQL
 
 This app was originally generated on Sat Mar 27 2021 19:19:48 GMT-0300 (GMT-03:00) using Sails v1.4.0.
 
+### Instructions
+ + clone this repo: ```$ git clone https://github.com/Cristianoaf81GIT/sailsjsgraphqlExample.git```
+ + install dependencies: ```$ npm install```
+ + run application: ```$ npm start or npm run dev```
+
+
+### License
++ [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
 <!-- Internally, Sails used [`sails-generate@2.0.1`](https://github.com/balderdashy/sails-generate/tree/v2.0.1/lib/core-generators/new). -->
 
 
